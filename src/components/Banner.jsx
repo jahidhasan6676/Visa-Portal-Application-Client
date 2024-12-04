@@ -1,23 +1,7 @@
 
 
 const Banner = () => {
-    const slides = [
-        {
-            title: "Discover Your Travel Destination!",
-            description: "Find the visa requirements for your next adventure, no matter where you want to go.",
-            buttonText: "Check Visa Requirements",
-        },
-        {
-            title: "Apply for Your Visa in Minutes!",
-            description: "Complete your visa application securely and easily – anytime, anywhere.",
-            buttonText: "Start Application",
-        },
-        {
-            title: "Track Your Visa Application Status",
-            description: "Check the status of your visa application at any time and stay updated on the progress.",
-            buttonText: "Track My Application",
-        },
-    ];
+    
 
     return (
         <div className="carousel w-full py-20">
