@@ -15,8 +15,8 @@ const Footer = () => {
             </div>
 
             {/* Footer Content */}
-            <div className=" mt-20 md:mt-40 pb-3">
-                <div className="w-11/12 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  mr-0 gap-8">
+            <div className=" mt-20 md:mt-28 lg:mt-40 pb-3">
+                <div className="w-11/12 lg:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-14 space-y-6">
                     {/* Logo and Social Links */}
                     <div className="space-y-4">
                         <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
 
                     {/* Contact Section */}
-                    <div className="space-y-4">
+                    <div className="space-y-4 ">
                         <h6 className="text-lg font-semibold">Contact Us</h6>
                         <p>
                             <i className="fas fa-phone"></i> +880 1818 186676

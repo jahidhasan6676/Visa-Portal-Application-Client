@@ -6,7 +6,7 @@ import Footer from "./Footer";
 const Root = () => {
     return (
         <div>
-          <div className="mb-[70px]">
+          <div className="mb-[82px]">
           <Navbar></Navbar>
           </div>
           <div className="min-h-[calc(100vh-430px)]">
