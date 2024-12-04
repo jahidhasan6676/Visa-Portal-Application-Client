@@ -3,6 +3,7 @@ import Root from "../MailLayout/Root";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Pages/Home";
 import AddVisas from "../Pages/AddVisas";
+import AllVisaUsers from "../Pages/AllVisaUsers";
 
   const router = createBrowserRouter([
     {
@@ -17,6 +18,11 @@ import AddVisas from "../Pages/AddVisas";
         {
           path:"/addVisa",
           element:<AddVisas></AddVisas>
+        },
+        {
+          path:"allVisa",
+          element:<AllVisaUsers></AllVisaUsers>,
+          loader:()=> fetch("http://localhost:5000/visa")
         }
       ]
     },
