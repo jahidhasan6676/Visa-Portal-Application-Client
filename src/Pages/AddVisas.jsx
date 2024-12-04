@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 
 const AddVisas = () => {
@@ -8,14 +9,38 @@ const AddVisas = () => {
         const countryName = form.countryName.value;
         const visaType = form.visaType.value;
         const processingTime = form.processingTime.value;
-        const required = form.required.value;
+       
+         // Collect all checked required documents
+         const required = Array.from(form.required)
+         .filter((checkbox) => checkbox.checked)
+         .map((checkbox) => checkbox.value);
+
         const description = form.description.value;
         const ageRestriction = parseInt(form.ageRestriction.value);
         const fee = parseInt(form.fee.value);
         const validity = form.validity.value;
         const applicationMethod = form.applicationMethod.value;
         const NewUser = {countryImage,countryName,visaType,processingTime,required,description,ageRestriction,fee,validity,applicationMethod};
-        console.log(NewUser)
+        console.log(NewUser);
+
+        fetch("http://localhost:5000/visa", {
+            method:"POST",
+            headers:{
+                'content-type':"application/json"
+            },
+            body:JSON.stringify(NewUser)
+        })
+        .then(res=> res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    
+                    text: "Your Visa request added",
+                    icon: "success"
+                  });
+            }
+        })
 
 
 
