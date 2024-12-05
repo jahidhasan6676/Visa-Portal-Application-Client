@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
@@ -8,6 +9,39 @@ const VisaDetails = () => {
     const [showModal, setShowModal] = useState(false);
     const { _id, countryName, countryImage, description, fee, visaType, processingTime, validity, applicationMethod, required, ageRestriction } = visaDetailsData;
     // console.log(visaDetailsData)
+
+
+    const handleApplicationData = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const firstName = form.firstName.value;
+        const lastName = form.lastName.value;
+        const appliedDate = form.appliedDate.value;
+        const fee = parseInt(form.fee.value);
+        const application = {email, firstName, lastName, appliedDate, fee};
+        console.log(application);
+
+        fetch('http://localhost:5000/application',{
+            method:"POST",
+            headers:{
+                'content-type':"application/json"
+            },
+            body:JSON.stringify(application)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.insertedId){
+                Swal.fire({
+                    
+                    text: "Your Visa request added",
+                    icon: "success"
+                  });
+            }
+        })
+    }
+
     return (
         <div className="py-20 w-11/12 lg:w-10/12 mx-auto ">
             <div className="bg-gray-100 rounded-md py-6">
@@ -87,7 +121,7 @@ const VisaDetails = () => {
                             ✕
                         </button>
                         <h3 className="font-bold text-lg mb-4">Visa Application Form</h3>
-                        <form  className="space-y-4">
+                        <form onSubmit={handleApplicationData}  className="space-y-4">
                             <div>
                                 <label className="block text-sm font-medium mb-1">Email</label>
                                 <input
