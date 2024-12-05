@@ -36,7 +36,7 @@ const AddVisas = () => {
             if(data.insertedId){
                 Swal.fire({
                     
-                    text: "Your Visa request added",
+                    text: "Your Application added",
                     icon: "success"
                   });
             }
