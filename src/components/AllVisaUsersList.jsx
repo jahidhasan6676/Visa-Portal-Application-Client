@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 
 
 const AllVisaUsersList = ({ visaUser, index }) => {
-    const { countryName, validity, visaType, fee } = visaUser;
+    const { _id, countryName, validity, visaType, fee } = visaUser;
     return (
         <>
             <div
@@ -20,12 +21,11 @@ const AllVisaUsersList = ({ visaUser, index }) => {
                 <p className="text-gray-600 text-sm">
                     <strong>Fee:</strong> ${fee}
                 </p>
-                <button
-
-                    className="mt-4 px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600"
-                >
-                    See Details
-                </button>
+                <Link to={`/visaDetails/${_id}`}>
+                    <button className="mt-4 px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md hover:bg-blue-600">
+                        See Details
+                    </button>
+                </Link>
             </div>
         </>
     );

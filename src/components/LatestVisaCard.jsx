@@ -1,23 +1,57 @@
+import { Link } from "react-router-dom";
 
 
 const LatestVisaCard = ({ visas }) => {
-    const { countryName, countryImage, description, fee, visaType, processingTime, validity, applicationMethod } = visas;
+    const { _id, countryName, countryImage, description, fee, visaType, processingTime, validity, applicationMethod } = visas;
     return (
-        <div className="card bg-base-100  shadow-xl">
-            <figure>
-                <img
-                    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                    alt="Shoes" />
-            </figure>
-            <div className="card-body">
-                <h2 className="card-title">
-                    Shoes!
-                    <div className="badge badge-secondary">NEW</div>
+        <div className="card border flex flex-col p-3">
+            <div>
+                <img className="h-[200px] w-full rounded-md object-cover"
+                    src={countryImage}
+                    alt="Flag" />
+            </div>
+            <div className="  flex-grow flex flex-col justify-between">
+                <h2 className="text-xl font-semibold text-gray-800 mb-4 mt-4">
+                    {countryName}
                 </h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div className="card-actions justify-end">
-                    <div className="badge badge-outline">Fashion</div>
-                    <div className="badge badge-outline">Products</div>
+                <div className="flex justify-between">
+                    {/* 1st row */}
+                    <div className="space-y-1">
+                        <p className="text-gray-600">
+                            <strong>Type:</strong> {visaType}
+                        </p>
+
+                        <p className="text-gray-600">
+                            <strong>Processing:</strong> {processingTime}
+                        </p>
+
+                        <p className="text-gray-600">
+                            <strong>Method:</strong> {applicationMethod}
+                        </p>
+                    </div>
+                    {/* 2nd row */}
+                    <div className="space-y-1">
+                        <p className="text-gray-600">
+                            <strong>Fee:</strong> ${fee}
+                        </p>
+
+                        <p className="text-gray-600">
+                            <strong>Validity:</strong> {validity}
+                        </p>
+                    </div>
+
+                </div>
+                <p className="text-gray-600 ">
+                    <strong>Description:</strong> {description}
+                </p>
+                {/* btn */}
+                <div className="flex justify-between mt-6">
+                    <Link to={`/visaDetails/${_id}`}>
+                    <button className="btn btn-success text-white w-full">See Details</button>
+                    </Link>
+                    <Link to="/allVisa">
+                    <button className="btn btn-accent text-white w-full">See All Visas</button>
+                    </Link>
                 </div>
             </div>
         </div>
