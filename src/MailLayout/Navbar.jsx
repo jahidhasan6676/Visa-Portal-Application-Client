@@ -27,10 +27,10 @@ const Navbar = () => {
                 </div>
                 {/* page name */}
                 <ul className={`md:flex md:items-center md:static absolute md:z-auto z-[-1] bg-gray-800  w-full left-0 md:w-auto md:pb-0 pb-6 md:pl-0 pl-7 transition-all duration-500 ease-in  ${open
-                    ? "top-20 opacity-100 "
+                    ? "top-[76px] opacity-100 "
                     : "hidden"
                     }`}>
-                    <li className="mx-4  md:my-0">
+                    <li className="mx-4 my-4 md:my-0">
                         <NavLink to="/" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >Home</NavLink>
                     </li>
                     <li className="mx-4 my-4 md:my-0">
@@ -46,7 +46,7 @@ const Navbar = () => {
                         <NavLink to="/application" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >My Visa applications</NavLink>
                     </li>
 
-                    <button className="text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600 transition-transform duration-300">Login</button>
+                    <button className="mx-4 text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600 transition-transform duration-300">Login</button>
 
                 </ul>
 

@@ -1,4 +1,5 @@
 import Banner from "../components/Banner";
+import LatestVisaSection from "../components/LatestVisaSection";
 
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
         <div>
             <h2></h2>
            <Banner></Banner>
+           <LatestVisaSection></LatestVisaSection>
         </div>
     );
 };

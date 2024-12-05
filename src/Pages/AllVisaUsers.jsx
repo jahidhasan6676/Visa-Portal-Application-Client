@@ -3,34 +3,20 @@ import { useLoaderData } from "react-router-dom";
 import AllVisaUsersList from "../components/AllVisaUsersList";
 
 
+
 const AllVisaUsers = () => {
     const visaUsersData = useLoaderData();
-    
+
     console.log(visaUsersData)
     return (
         <div className="py-20">
-            <div className="overflow-x-auto w-11/12 lg:w-10/12 mx-auto bg-gray-100 shadow rounded-md py-4 px-10">
-                <table className="table ">
-                    {/* head */}
-                    <thead className="">
-                        <tr className=" text-black border-b-1 border-black" >
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>Validity</th>
-                            <th>VisaType</th>
-                            <th>Fee</th>
-                            <th>Action</th>
-                            
-                            
-                        </tr>
-                    </thead>
-                    <tbody >
-                       {
-                        visaUsersData.map((visaUser, index) => <AllVisaUsersList key={visaUser._id} visaUser={visaUser} index={index + 1}></AllVisaUsersList>)
-                       }
-                        
-                    </tbody>
-                </table>
+            <div className="py-20 bg-gray-50">
+                <h1 className="text-3xl font-bold text-center mb-10">All Visas</h1>
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-11/12 lg:w-10/12 mx-auto">
+                    {
+                        visaUsersData.map(visaUser => <AllVisaUsersList key={visaUser._id} visaUser={visaUser}></AllVisaUsersList>)
+                    }
+                </div>
             </div>
         </div>
     );
