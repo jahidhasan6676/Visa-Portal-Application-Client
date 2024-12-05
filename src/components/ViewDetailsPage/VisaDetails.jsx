@@ -1,18 +1,20 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
 
 
 const VisaDetails = () => {
     const visaDetailsData = useLoaderData();
+    const [showModal, setShowModal] = useState(false);
     const { _id, countryName, countryImage, description, fee, visaType, processingTime, validity, applicationMethod, required, ageRestriction } = visaDetailsData;
-    console.log(visaDetailsData)
+    // console.log(visaDetailsData)
     return (
         <div className="py-20 w-11/12 lg:w-10/12 mx-auto ">
             <div className="bg-gray-100 rounded-md py-6">
                 <h2 className="text-2xl font-semibold text-center">Visa Details: {visaDetailsData.countryName}</h2>
 
 
-                <div className="   overflow-hidden md:flex gap-14 p-20 ">
+                <div className="   overflow-hidden md:flex gap-6 lg:gap-14 p-6 md:10 lg:p-20 ">
                     {/* Country Image */}
                     <div className="flex-1">
                         <img
@@ -67,12 +69,81 @@ const VisaDetails = () => {
                         </div>
 
                         {/* CTA Button */}
-                        <button className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors duration-300">
-                            Apply
+                        <button onClick={() => setShowModal(true)} className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-700 transition-colors duration-300">
+                            Apply for visa
                         </button>
                     </div>
                 </div>
             </div>
+
+            {/* Modal for Visa Application */}
+            {showModal && (
+                <div className="modal modal-open pt-20">
+                    <div className="modal-box  relative">
+                        <button
+                            className="btn btn-sm btn-circle absolute right-2 top-2"
+                            onClick={() => setShowModal(false)}
+                        >
+                            ✕
+                        </button>
+                        <h3 className="font-bold text-lg mb-4">Visa Application Form</h3>
+                        <form  className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Email</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-1">
+                                    First Name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="firstName"
+                                    required
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-1">
+                                    Last Name
+                                </label>
+                                <input
+                                    type="text"
+                                    name="lastName"
+                                    required
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-1">
+                                    Applied Date
+                                </label>
+                                <input
+                                    type="text"
+                                    name="appliedDate"
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-1">Fee</label>
+                                <input
+                                    type="number"
+                                    name="fee"
+                                    required
+                                    className="input input-bordered w-full"
+                                />
+                            </div>
+                            <button className="btn btn-primary w-full mt-4" type="submit">
+                                Apply
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </div>
 
     );
