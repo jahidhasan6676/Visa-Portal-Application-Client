@@ -1,4 +1,4 @@
-import {  createContext, useState } from "react";
+import {  createContext, useEffect, useState } from "react";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import auth from "../firebase/firebase.config";
 
@@ -11,10 +11,10 @@ const AuthProvider = ({children}) => {
    
 
     // google popup
-    // const googlePopup = () => {
-    //     setLoading(true)
-    //     return signInWithPopup(auth, googleProvider);
-    // }
+    const googlePopup = () => {
+        // setLoading(true)
+        return signInWithPopup(auth, googleProvider);
+    }
     
     // login user
     const userLogin = (email, password) => {
@@ -29,37 +29,39 @@ const AuthProvider = ({children}) => {
     }
 
     // logOut user
-    // const userLogOut = () => {
-    //     setLoading(true)
-    //     return signOut(auth)
-    // }
+    const userLogOut = () => {
+        // setLoading(true)
+        return signOut(auth)
+    }
 
 
     const authInfo = {
         userRegister,
-        userLogin
+        userLogin,
+        googlePopup,
+        userLogOut,
+        setUser,
+        user
         
     }
 
 
      // observation setup
-    //  useEffect(() => {
-    //     const unSubscriber = onAuthStateChanged(auth, (currentUser) => {
-    //         if(currentUser){
-    //             setUser(currentUser);
+     useEffect(() => {
+        const unSubscriber = onAuthStateChanged(auth, (currentUser) => {
+            if(currentUser){
+                setUser(currentUser);
                 
-    //         }
-    //         else{
-    //             setUser(null)
-    //         }
-    //         setLoading(false);
-    //         return () => {
-    //             unSubscriber();
-    //         }
-    //     })
-        
-        
-    // }, [])
+            }
+            else{
+                setUser(null)
+            }
+            // setLoading(false);
+            return () => {
+                unSubscriber();
+            }
+        })
+    }, [])
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

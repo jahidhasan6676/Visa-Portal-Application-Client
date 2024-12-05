@@ -4,7 +4,7 @@ import { AuthContext } from "./AuthProvider";
 
 
 const Login = () => {
-    const {userLogin} = useContext(AuthContext)
+    const {userLogin, googlePopup, setUser} = useContext(AuthContext)
 
     const handleLogin = e =>{
         e.preventDefault();
@@ -16,13 +16,25 @@ const Login = () => {
         // user login
         userLogin(email,password)
         .then(result => {
-            console.log(result.user)
+            console.log(result.user);
+            setUser(result.user)
         })
         .catch(error =>{
             console.log(error)
         })
 
+    }
 
+    // google popup 
+    const handleGooglePopup = () => {
+        googlePopup()
+            .then(result => {
+                setUser(result.user);
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
     return (
         <div className="py-20">
@@ -81,7 +93,6 @@ const Login = () => {
                             Login
                         </button>
 
-
                     </form>
                     {/* Login Link */}
                     <div className="mt-4 text-center">
@@ -101,7 +112,7 @@ const Login = () => {
 
                     {/* Social Login Options */}
                     <div className="mt-6 flex justify-center">
-                        <button
+                        <button onClick={handleGooglePopup}
                             className="flex items-center px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300"
 
                         >

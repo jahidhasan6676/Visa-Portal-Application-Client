@@ -1,13 +1,14 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 
 
 const Register = () => {
 
-    const {userRegister} = useContext(AuthContext)
+    const { userRegister, googlePopup, setUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
-    const handleRegister = e =>{
+    const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
@@ -15,14 +16,42 @@ const Register = () => {
         const photoURL = form.photoURL.value;
         console.log(email, password, photoURL);
 
+        // clear error message
+        setError("");
+
+        // password validation
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+        if (!passwordRegex.test(password)) {
+            setError(
+                "Password must contain an uppercase letter, a lowercase letter, and be at least 6 characters long."
+            );
+            return;
+        };
+
+
         // sing Up
-        userRegister(email,password)
-        .then(result => {
-            console.log(result.user)
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+        userRegister(email, password)
+            .then(result => {
+                console.log(result.user);
+                setUser(result.user)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    }
+
+    // google popup
+    const handleGooglePopup = () => {
+        googlePopup()
+            .then(result => {
+                console.log(result.user);
+                setUser(result.user)
+                // navigate("/")
+                // toast.success(`Welcome ${result.user.displayName}!`)
+            })
+            .catch(error => {
+                // console.log(error)
+            })
     }
     return (
         <div className="py-20">
@@ -88,6 +117,9 @@ const Register = () => {
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                 required
                             />
+                            {
+                                error && <p className='text-xs text-red-500'>{error}</p>
+                            }
                         </div>
 
                         {/* Register Button */}
@@ -117,7 +149,7 @@ const Register = () => {
 
                     {/* Google Login */}
                     <button
-
+                        onClick={handleGooglePopup}
                         className="w-full mt-4 flex items-center justify-center px-4 py-2 bg-gray-100 rounded-lg hover:bg-gray-200 transition duration-300"
                     >
                         <img
