@@ -6,6 +6,8 @@ import AddVisas from "../Pages/AddVisas";
 import AllVisaUsers from "../Pages/AllVisaUsers";
 import VisaDetails from "../components/ViewDetailsPage/VisaDetails";
 import Test from "../components/Test";
+import Login from "../Authentication/Login";
+import Register from "../Authentication/Register";
 
   const router = createBrowserRouter([
     {
@@ -30,6 +32,14 @@ import Test from "../components/Test";
           path:"/visaDetails/:id",
           element:<VisaDetails></VisaDetails>,
           loader:({params})=>fetch(`http://localhost:5000/visa/${params.id}`)
+        },
+        {
+          path:"/login",
+          element:<Login></Login>
+        },
+        {
+          path:"/register",
+          element:<Register></Register>
         },
         {
           path:"/test",

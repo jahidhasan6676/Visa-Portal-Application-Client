@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 // import { IoMenu, IoClose } from "react-icons/io5";
 // import 'animate.css';
 import { TfiWorld } from "react-icons/tfi";
@@ -46,7 +46,9 @@ const Navbar = () => {
                         <NavLink to="/application" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >My Visa applications</NavLink>
                     </li>
 
+                    <Link to="/login">
                     <button className="mx-4 text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600 transition-transform duration-300">Login</button>
+                    </Link>
 
                 </ul>
 
