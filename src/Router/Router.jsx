@@ -26,8 +26,9 @@ import VisaDetails from "../components/ViewDetailsPage/VisaDetails";
           loader:()=> fetch("http://localhost:5000/visa")
         },
         {
-          path:"/visaDetails",
-          element:<VisaDetails></VisaDetails>
+          path:"/visaDetails/:id",
+          element:<VisaDetails></VisaDetails>,
+          loader:({params})=>fetch(`http://localhost:5000/visa/${params.id}`)
         }
       ]
     },
