@@ -1,7 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 
 const Register = () => {
+
+    const {userRegister} = useContext(AuthContext)
+
+    const handleRegister = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        const photoURL = form.photoURL.value;
+        console.log(email, password, photoURL);
+
+        // sing Up
+        userRegister(email,password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error=>{
+            console.log(error)
+        })
+    }
     return (
         <div className="py-20">
             <div className="flex items-center justify-center py-10 bg-gradient-to-br from-green-100 via-purple-100 to-blue-50">
@@ -12,7 +34,7 @@ const Register = () => {
                     </h2>
 
                     {/* Registration Form */}
-                    <form className="space-y-6">
+                    <form onSubmit={handleRegister} className="space-y-6">
                         {/* Name Field */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">

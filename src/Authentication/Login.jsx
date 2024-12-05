@@ -1,7 +1,29 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "./AuthProvider";
 
 
 const Login = () => {
+    const {userLogin} = useContext(AuthContext)
+
+    const handleLogin = e =>{
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email,password);
+
+        // user login
+        userLogin(email,password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+
+
+    }
     return (
         <div className="py-20">
             <div className="flex items-center justify-center  py-10 lg:py-20 bg-gradient-to-br from-blue-100 via-purple-100 to-blue-50">
@@ -12,7 +34,7 @@ const Login = () => {
                     </h2>
 
                     {/* Form */}
-                    <form className="space-y-6">
+                    <form onSubmit={handleLogin} className="space-y-6">
                         {/* Email Field */}
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -21,6 +43,7 @@ const Login = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
+                                name="email"
                                 required
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             />
@@ -34,6 +57,7 @@ const Login = () => {
                             <input
                                 type="password"
                                 placeholder="Enter your password"
+                                name="password"
                                 required
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             />
