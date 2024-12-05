@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 
 
@@ -7,6 +7,7 @@ const Register = () => {
 
     const { userRegister, googlePopup, setUser } = useContext(AuthContext);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
@@ -32,8 +33,9 @@ const Register = () => {
         // sing Up
         userRegister(email, password)
             .then(result => {
-                console.log(result.user);
-                setUser(result.user)
+                // console.log(result.user);
+                setUser(result.user);
+                navigate("/")
             })
             .catch(error => {
                 console.log(error)
@@ -44,9 +46,9 @@ const Register = () => {
     const handleGooglePopup = () => {
         googlePopup()
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 setUser(result.user)
-                // navigate("/")
+                navigate("/")
                 // toast.success(`Welcome ${result.user.displayName}!`)
             })
             .catch(error => {

@@ -1,27 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 
 
 const Login = () => {
-    const {userLogin, googlePopup, setUser} = useContext(AuthContext)
+    const { userLogin, googlePopup, setUser } = useContext(AuthContext);
+    const [error, setError] = useState('')
 
-    const handleLogin = e =>{
+    const handleLogin = e => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email,password);
+        console.log(email, password);
+
+        // clear error massage
+        setError("");
 
         // user login
-        userLogin(email,password)
-        .then(result => {
-            console.log(result.user);
-            setUser(result.user)
-        })
-        .catch(error =>{
-            console.log(error)
-        })
+        userLogin(email, password)
+            .then(result => {
+                console.log(result.user);
+                setUser(result.user)
+            })
+            .catch(error => {
+                setError(error.code)
+            })
 
     }
 
@@ -73,6 +77,9 @@ const Login = () => {
                                 required
                                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                             />
+                            {
+                                error && <p className='text-xs text-red-500'>Invalid Email or Password! </p>
+                            }
                         </div>
 
                         {/* Forget Password */}

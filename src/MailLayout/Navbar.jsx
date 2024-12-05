@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 // import { IoMenu, IoClose } from "react-icons/io5";
 // import 'animate.css';
 import { TfiWorld } from "react-icons/tfi";
@@ -9,11 +9,14 @@ const Navbar = () => {
     const {userLogOut, user} = useContext(AuthContext)
 
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
 
     // logOut
     const handleLogOut = () =>{
-        userLogOut()
+        userLogOut();
+        navigate("/login")
+
     }
 
     return (
