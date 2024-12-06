@@ -1,129 +1,59 @@
-import React, { useState } from "react";
+
+import 'animate.css';
+import { Fade, Flip, Zoom } from 'react-awesome-reveal';
+
 
 const Test = () => {
-  const [showModal, setShowModal] = useState(false);
-//   const [formData, setFormData] = useState({
-//     email: user?.email || "",
-//     firstName: "",
-//     lastName: "",
-//     appliedDate: new Date().toISOString().split("T")[0], // Current date
-//     fee: "",
-//   });
-
-  // Handle form input changes
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({ ...formData, [name]: value });
-//   };
-
-  // Handle form submission
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    // try {
-    //   // API call to save the form data
-    //   console.log("Form submitted:", formData);
-    //   alert("Visa application submitted successfully!");
-    //   setShowModal(false);
-    // } catch (error) {
-    //   console.error("Error submitting visa application:", error);
-    //   alert("Failed to submit. Try again.");
-    // }
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-6">
-      <div className="bg-white shadow-lg rounded-lg p-6 max-w-xl w-full">
-        <h1 className="text-2xl font-bold mb-4">Visa Details</h1>
-        <p className="text-gray-700 mb-2">
-          <strong>Visa Type:</strong> Tourist Visa
-        </p>
-        <p className="text-gray-700 mb-2">
-          <strong>Country:</strong> USA
-        </p>
-        <p className="text-gray-700 mb-4">
-          <strong>Fee:</strong> $150
-        </p>
-        <button
-          className="btn btn-primary w-full"
-          onClick={() => setShowModal(true)}
-        >
-          Apply for Visa
-        </button>
-      </div>
 
-      {/* DaisyUI Modal */}
-      {showModal && (
-        <div className="modal modal-open">
-          <div className="modal-box relative">
-            <button
-              className="btn btn-sm btn-circle absolute right-2 top-2"
-              onClick={() => setShowModal(false)}
-            >
-              ✕
-            </button>
-            <h3 className="font-bold text-lg mb-4">Visa Application Form</h3>
-            <form onSubmit={handleFormSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium mb-1">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  className="input input-bordered w-full"
-                />
+   
+      <div className="pb-20">
+        <div className="bg-gray-100 py-28">
+          <div className="w-11/12 lg:w-10/12 mx-auto">
+            <h2 className="text-red-600 uppercase text-sm tracking-wide font-semibold mb-3">Coaching We Offer</h2>
+            <h1 className="text-4xl font-bold mb-6">Get The Immigration Trainings <br /> You Deserve.</h1>
+            <div className="lg:flex gap-8 w-full space-y-6 md:space-y-0">
+
+            
+          
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                {/* card-1 */}
+
+                <div className="p-6 rounded-lg shadow-md transition-transform duration-300 border-2 hover:border-red-500 hover:scale-105 hover:shadow-md bg-white animate__animated animate__fadeInUp" >
+                  <h3 className="text-red-600 text-xl font-semibold mb-2 animate__animated animate__fadeInUp">01.Citizenship Test </h3>
+                  <p className="text-gray-600 animate__animated animate__fadeInUp">Prepare for your citizenship test with expert guidance. Gain a comprehensive understanding of the laws, rights, and responsibilities of citizenship with our structured training program.</p>
+                </div>
+
+                {/* card-2 */}
+                <div className="p-6 rounded-lg shadow-md transition-transform duration-300 border-2 hover:border-red-500 hover:scale-105 hover:shadow-md bg-white animate__animated animate__fadeInUp" >
+                  <h3 className="text-red-600 text-xl font-semibold mb-2 animate__animated animate__fadeInUp">01.TOEFL Coaching </h3>
+                  <p className="text-gray-600 animate__animated animate__fadeInUp">Master your English language skills with our TOEFL coaching. Designed to help you excel in reading, writing, speaking, and listening, ensuring a high score for international opportunities.</p>
+                </div>
+                {/* card-3 */}
+                <div className="p-6 rounded-lg shadow-md transition-transform duration-300 border-2 hover:border-red-500 hover:scale-105 hover:shadow-md bg-white animate__animated animate__fadeInUp" >
+                  <h3 className="text-red-600 text-xl font-semibold mb-2 animate__animated animate__fadeInUp">01.PTE Coaching</h3>
+                  <p className="text-gray-600 animate__animated animate__fadeInUp">Achieve success in the Pearson Test of English (PTE) with personalized coaching. Our experts help you focus on the areas that matter most to score well in academic and general modules.</p>
+                </div>
+                {/* card-4 */}
+                <div className="p-6 rounded-lg shadow-md transition-transform duration-300 border-2 hover:border-red-500 hover:scale-105 hover:shadow-md bg-white animate__animated animate__fadeInUp" >
+                  <h3 className="text-red-600 text-xl font-semibold mb-2 animate__animated animate__fadeInUp">01.SAT Coaching</h3>
+                  <p className="text-gray-600 animate__animated animate__fadeInUp">Boost your SAT scores with our comprehensive training. From mathematics to critical reading and writing, we provide the strategies and practice needed to maximize your performance.</p>
+                </div>
+
               </div>
+          
+             
+
+              {/* image */}
               <div>
-                <label className="block text-sm font-medium mb-1">
-                  First Name
-                </label>
-                <input
-                  type="text"
-                  name="firstName"
-                  
-                  required
-                  className="input input-bordered w-full"
-                />
+                <img src="https://i.ibb.co.com/z4c1b8f/pexels-spencer-4353813.jpg" className="w-[700px] rounded-md h-full" alt="" />
               </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Last Name
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  
-                  required
-                  className="input input-bordered w-full"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">
-                  Applied Date
-                </label>
-                <input
-                  type="text"
-                  name="appliedDate"
-                  
-                  className="input input-bordered w-full"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-medium mb-1">Fee</label>
-                <input
-                  type="number"
-                  name="fee"
-                  
-                  required
-                  className="input input-bordered w-full"
-                />
-              </div>
-              <button className="btn btn-primary w-full mt-4" type="submit">
-                Apply
-              </button>
-            </form>
+            </div>
           </div>
         </div>
-      )}
-    </div>
+
+      </div>
+    
   );
 };
 

@@ -1,9 +1,9 @@
 import { useContext, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
-// import { IoMenu, IoClose } from "react-icons/io5";
-// import 'animate.css';
 import { TfiWorld } from "react-icons/tfi";
 import { AuthContext } from "../Authentication/AuthProvider";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css';
 
 const Navbar = () => {
     const { userLogOut, user } = useContext(AuthContext)
@@ -59,25 +59,28 @@ const Navbar = () => {
                     {
                         user ?
                             <div className="flex justify-between gap-2">
-                                <img title={user?.displayName} className="w-12 rounded-full cursor-pointer" src={user?.photoURL} alt="" />
+                                {/* <img title={user?.displayName} className="w-12 rounded-full cursor-pointer" src={user?.photoURL} alt="" /> */}
+                                <img
+                                    data-tooltip-id="user-tooltip"
+                                    data-tooltip-content={user?.displayName}
+                                    className="w-12 h-12 rounded-full cursor-pointer"
+                                    src={user?.photoURL}
+                                    alt="User"
+                                />
+                                <Tooltip id="user-tooltip" place="top" />
                                 <button onClick={handleLogOut} className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600 ">LogOut</button>
                             </div> :
-                           
+
                             <div className="flex justify-between gap-2">
                                 <Link to="/login">
-                                <button className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Login</button>
-                            </Link>
-                            <Link to="/register">
-                                <button className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Register</button>
-                            </Link>
+                                    <button className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Login</button>
+                                </Link>
+                                <Link to="/register">
+                                    <button className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Register</button>
+                                </Link>
                             </div>
-                           
                     }
-
-
-
                 </ul>
-
             </div>
         </nav>
     );
