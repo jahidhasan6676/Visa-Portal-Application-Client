@@ -5,17 +5,18 @@ import { AuthContext } from "./AuthProvider";
 
 const Register = () => {
 
-    const { userRegister, googlePopup, setUser } = useContext(AuthContext);
+    const { userRegister, googlePopup, setUser, updateUserProfile } = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
     const handleRegister = e => {
         e.preventDefault();
         const form = e.target;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
-        const photoURL = form.photoURL.value;
-        console.log(email, password, photoURL);
+        const photo = form.photoURL.value;
+        // console.log(email, password, photoURL);
 
         // clear error message
         setError("");
@@ -33,8 +34,9 @@ const Register = () => {
         // sing Up
         userRegister(email, password)
             .then(result => {
-                // console.log(result.user);
+                console.log(result.user);
                 setUser(result.user);
+                updateUserProfile({displayName:name, photoURL:photo})
                 navigate("/")
             })
             .catch(error => {
@@ -49,7 +51,7 @@ const Register = () => {
                 // console.log(result.user);
                 setUser(result.user)
                 navigate("/")
-                // toast.success(`Welcome ${result.user.displayName}!`)
+               
             })
             .catch(error => {
                 // console.log(error)
