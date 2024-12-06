@@ -9,6 +9,8 @@ import Test from "../components/Test";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import PrivateRoute from "./PrivateRoute";
+import MyVisaApplication from "../Pages/MyVisaApplication";
+import MyAddedVisas from "../Pages/MyAddedVisas";
 
   const router = createBrowserRouter([
     {
@@ -45,6 +47,15 @@ import PrivateRoute from "./PrivateRoute";
         {
           path:"/test",
           element:<Test></Test>
+        },
+        {
+          path:"/visaApplication",
+          element:<MyVisaApplication></MyVisaApplication>,
+          
+        },
+        {
+          path:"/myAddedVisa",
+          element:<MyAddedVisas></MyAddedVisas>
         }
       ]
     },

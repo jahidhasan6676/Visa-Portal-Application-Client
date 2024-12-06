@@ -1,16 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../Authentication/AuthProvider";
 
 
 
 const VisaDetails = () => {
     const visaDetailsData = useLoaderData();
+    const {user} = useContext(AuthContext)
     const [showModal, setShowModal] = useState(false);
     const { _id, countryName, countryImage, description, fee, visaType, processingTime, validity, applicationMethod, required, ageRestriction } = visaDetailsData;
     // console.log(visaDetailsData)
-
-
+    const today = new Date().toISOString().split("T")[0];
+    
     const handleApplicationData = e =>{
         e.preventDefault();
         const form = e.target;
@@ -127,6 +129,8 @@ const VisaDetails = () => {
                                 <input
                                     type="email"
                                     name="email"
+                                    defaultValue={user?.email}
+                                    readOnly
                                     className="input input-bordered w-full"
                                 />
                             </div>
@@ -157,8 +161,10 @@ const VisaDetails = () => {
                                     Applied Date
                                 </label>
                                 <input
-                                    type="text"
+                                    type="date"
                                     name="appliedDate"
+                                    defaultValue={today}
+                                    readOnly
                                     className="input input-bordered w-full"
                                 />
                             </div>
@@ -167,7 +173,9 @@ const VisaDetails = () => {
                                 <input
                                     type="number"
                                     name="fee"
+                                    defaultValue={fee}
                                     required
+                                    readOnly
                                     className="input input-bordered w-full"
                                 />
                             </div>

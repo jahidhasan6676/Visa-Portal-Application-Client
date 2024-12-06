@@ -20,7 +20,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="p-5 bg-gray-800 text-white w-full  fixed top-0 z-50">
+        <nav className="py-5 bg-gray-800 text-white w-full  fixed top-0 z-50">
 
             <div className="w-11/12 lg:w-10/12 mx-auto lg:flex lg:justify-between lg:items-center ">
                 {/* logo and name */}
@@ -49,23 +49,23 @@ const Navbar = () => {
                         <NavLink to="/addVisa" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >Add Visa</NavLink>
                     </li>
                     <li className="mx-4 my-4 lg:my-0">
-                        <NavLink to="/addedVisa" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >My added visas</NavLink>
+                        <NavLink to="/myAddedVisa" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >My added visas</NavLink>
                     </li>
                     <li className="mx-4 my-4 lg:my-0">
-                        <NavLink to="/application" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >My Visa applications</NavLink>
+                        <NavLink to="/visaApplication" className={({ isActive }) => ` ${isActive ? 'text-yellow-400' : 'hover:text-yellow-300'}`} >My Visa applications</NavLink>
                     </li>
 
 
                     {
                         user ?
-                            <div className="flex">
+                            <div className="flex justify-between gap-2">
                                 <img title={user?.displayName} className="w-12 rounded-full cursor-pointer" src={user?.photoURL} alt="" />
-                                <button onClick={handleLogOut} className="mx-4 text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600 ">LogOut</button>
+                                <button onClick={handleLogOut} className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600 ">LogOut</button>
                             </div> :
                            
-                            <div className="flex">
+                            <div className="flex justify-between gap-2">
                                 <Link to="/login">
-                                <button className="mx-4 text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Login</button>
+                                <button className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Login</button>
                             </Link>
                             <Link to="/register">
                                 <button className=" text-white bg-gradient-to-r from-teal-500 to-cyan-500 py-2 px-4 rounded-lg font-bold hover:from-teal-600 hover:to-cyan-600">Register</button>
