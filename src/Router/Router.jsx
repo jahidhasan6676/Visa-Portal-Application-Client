@@ -50,8 +50,8 @@ import MyAddedVisas from "../Pages/MyAddedVisas";
         },
         {
           path:"/visaApplication",
-          element:<MyVisaApplication></MyVisaApplication>,
-          loader:()=> fetch("http://localhost:5000/visaApply")
+          element:<PrivateRoute><MyVisaApplication></MyVisaApplication></PrivateRoute>,
+          // loader:({params})=> fetch(`http://localhost:5000/visaApply/${params.email}`)
           
         },
         {

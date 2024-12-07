@@ -7,7 +7,7 @@ import AllVisaUsersList from "../components/AllVisaUsersList";
 const AllVisaUsers = () => {
     const visaUsersData = useLoaderData();
 
-    console.log(visaUsersData)
+    // console.log(visaUsersData)
     return (
         <div className="py-20">
             <div className="py-20 bg-gray-50">

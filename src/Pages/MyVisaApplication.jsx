@@ -1,28 +1,52 @@
 
 import { useLoaderData } from "react-router-dom";
 import MyVisaApplicationCard from "../components/MyVisaApplicationCard";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Authentication/AuthProvider";
 
 
 const MyVisaApplication = () => {
-    const visaApplyData = useLoaderData();
-    const [visaApply, setVisaApply] = useState(visaApplyData);
+    const {user,setUser,setLoading} = useContext(AuthContext)
+    // const visaApplyData = useLoaderData();
+    const [visaApply, setVisaApply] = useState([]);
     const [search, setSearch] = useState("");
+    console.log(user)
 
+
+    // email filter data
     useEffect(() => {
-        fetch(`http://localhost:5000/visaApply/?search=${search}`)
-            .then(res => res.json())
-            .then(data => {
-                setVisaApply(data)
-                // console.log(data)
+        // Fetch campaigns added by the specific user
+        if(user?.email) {
+          fetch(`http://localhost:5000/visaApply/emails/${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => {
+               
+                setVisaApply(data);
+                setLoading(false)
+                console.log(data)
             })
+        
+            .catch((error) => console.error("Error fetching visaApply:", error));
+        }
+      }, [user]);
 
-    }, [search])
+
+    // search country name
+    // useEffect(() => {
+    //     fetch(`http://localhost:5000/visaApply/?search=${search}`)
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setVisaApply(data)
+    //             // console.log(data)
+    //         })
+
+    // }, [search]);
+
 
     return (
         <div className=" py-20 bg-gray-100">
             <div className="w-11/12 lg:w-10/12 mx-auto  ">
-                <div className="w-full pt-8 md:flex md:justify-between">
+                <div className="w-full pt-8 md:flex md:justify-between md:items-center">
 
                     <div className="">
                         <h1 className="text-2xl md:text-3xl font-bold mb-10">

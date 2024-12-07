@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Authentication/AuthProvider";
 
 
 const AddVisas = () => {
+    const {user} = useContext(AuthContext)
     const handleAddVisaUser = event =>{
         event.preventDefault();
         const form = event.target;
@@ -20,7 +23,8 @@ const AddVisas = () => {
         const fee = parseInt(form.fee.value);
         const validity = form.validity.value;
         const applicationMethod = form.applicationMethod.value;
-        const NewUser = {countryImage,countryName,visaType,processingTime,required,description,ageRestriction,fee,validity,applicationMethod};
+        const email = user.email;
+        const NewUser = {countryImage,countryName,visaType,processingTime,required,description,ageRestriction,fee,validity,applicationMethod,email};
         console.log(NewUser);
 
         fetch("http://localhost:5000/visa", {
