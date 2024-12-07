@@ -56,7 +56,8 @@ import MyAddedVisas from "../Pages/MyAddedVisas";
         },
         {
           path:"/myAddedVisa",
-          element:<MyAddedVisas></MyAddedVisas>
+          element:<PrivateRoute><MyAddedVisas></MyAddedVisas></PrivateRoute>,
+          
         }
       ]
     },

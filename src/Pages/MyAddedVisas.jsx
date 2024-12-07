@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Authentication/AuthProvider";
 import MyAddVisaCard from "../components/MyAddVisaCard";
+import { Fade } from "react-awesome-reveal";
 
 
 const MyAddedVisas = () => {
@@ -27,12 +28,14 @@ const MyAddedVisas = () => {
                 <h2 className="text-3xl font-bold text-center">My All Visa Card</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {
-                    myAddVisa.map((addVisa) => <MyAddVisaCard key={addVisa._id} addVisa={addVisa}></MyAddVisaCard>)
-                }
-            </div>
-           
+            <Fade duration={4000}>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {
+                        myAddVisa.map((addVisa) => <MyAddVisaCard key={addVisa._id} addVisa={addVisa} setMyAddVisa={setMyAddVisa} myAddVisa={myAddVisa}></MyAddVisaCard>)
+                    }
+                </div>
+            </Fade>
+
         </div>
     );
 };
