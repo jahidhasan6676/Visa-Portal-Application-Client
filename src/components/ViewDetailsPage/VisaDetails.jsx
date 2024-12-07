@@ -21,10 +21,10 @@ const VisaDetails = () => {
         const lastName = form.lastName.value;
         const appliedDate = form.appliedDate.value;
         const fee = parseInt(form.fee.value);
-        const application = {email, firstName, lastName, appliedDate, fee};
-        console.log(application);
+        const application = {email, firstName, lastName, appliedDate, fee, countryName, countryImage, visaType, processingTime, validity, applicationMethod };
+        // console.log(application);
 
-        fetch('http://localhost:5000/application',{
+        fetch('http://localhost:5000/visaApply',{
             method:"POST",
             headers:{
                 'content-type':"application/json"
