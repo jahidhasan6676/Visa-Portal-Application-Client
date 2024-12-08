@@ -5,7 +5,7 @@ import LatestVisaCard from "./LatestVisaCard";
 const LatestVisaSection = () => {
     const [visaData, setVisaData] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/visaCard")
+        fetch("https://visa-portal-website-server.vercel.app/visaCard")
             .then(res => res.json())
             .then(data => {
                 // console.log(data);

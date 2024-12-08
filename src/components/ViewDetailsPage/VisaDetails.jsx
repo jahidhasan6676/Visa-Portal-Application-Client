@@ -24,7 +24,7 @@ const VisaDetails = () => {
         const application = {email, firstName, lastName, appliedDate, fee, countryName, countryImage, visaType, processingTime, validity, applicationMethod };
         // console.log(application);
 
-        fetch('http://localhost:5000/visaApply',{
+        fetch('https://visa-portal-website-server.vercel.app/visaApply',{
             method:"POST",
             headers:{
                 'content-type':"application/json"
@@ -33,7 +33,7 @@ const VisaDetails = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             if(data.insertedId){
                 Swal.fire({
                     

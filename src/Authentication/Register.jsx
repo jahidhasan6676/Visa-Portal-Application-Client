@@ -34,13 +34,13 @@ const Register = () => {
         // sing Up
         userRegister(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 setUser(result.user);
                 updateUserProfile({displayName:name, photoURL:photo})
                 navigate("/")
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
     }
 

@@ -10,20 +10,20 @@ const MyVisaApplication = () => {
     // const visaApplyData = useLoaderData();
     const [visaApply, setVisaApply] = useState([]);
     const [search, setSearch] = useState("");
-    console.log(user)
+    // console.log(user)
 
 
     // email filter data
     useEffect(() => {
         // Fetch campaigns added by the specific user
         if(user?.email) {
-          fetch(`http://localhost:5000/visaApply/emails/${user?.email}`)
+          fetch(`https://visa-portal-website-server.vercel.app/visaApply/emails/${user?.email}`)
             .then((res) => res.json())
             .then((data) => {
                
                 setVisaApply(data);
                 setLoading(false)
-                console.log(data)
+                // console.log(data)
             })
         
             .catch((error) => console.error("Error fetching visaApply:", error));
@@ -33,7 +33,7 @@ const MyVisaApplication = () => {
 
     // search country name
     // useEffect(() => {
-    //     fetch(`http://localhost:5000/visaApply/?search=${search}`)
+    //     fetch(`https://visa-portal-website-server.vercel.app/visaApply/?search=${search}`)
     //         .then(res => res.json())
     //         .then(data => {
     //             setVisaApply(data)

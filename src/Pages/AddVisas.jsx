@@ -25,9 +25,9 @@ const AddVisas = () => {
         const applicationMethod = form.applicationMethod.value;
         const email = user.email;
         const NewUser = {countryImage,countryName,visaType,processingTime,required,description,ageRestriction,fee,validity,applicationMethod,email};
-        console.log(NewUser);
+        // console.log(NewUser);
 
-        fetch("http://localhost:5000/visa", {
+        fetch("https://visa-portal-website-server.vercel.app/visa", {
             method:"POST",
             headers:{
                 'content-type':"application/json"

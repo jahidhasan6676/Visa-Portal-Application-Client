@@ -14,7 +14,7 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+        // console.log(email, password);
 
         // clear error massage
         setError("");
@@ -22,7 +22,7 @@ const Login = () => {
         // user login
         userLogin(email, password)
             .then(result => {
-                console.log(result.user);
+                // console.log(result.user);
                 setUser(result.user);
                 
                 navigate(location?.state ? location.state : "/")
@@ -38,12 +38,12 @@ const Login = () => {
         googlePopup()
             .then(result => {
                 setUser(result.user);
-                console.log(result.user);
+                // console.log(result.user);
                 navigate(location?.state ? location.state : "/");
                 
             })
             .catch(error => {
-                console.log(error)
+                // console.log(error)
             })
     }
     return (

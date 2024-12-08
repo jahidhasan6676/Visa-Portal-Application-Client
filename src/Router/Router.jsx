@@ -29,12 +29,12 @@ import MyAddedVisas from "../Pages/MyAddedVisas";
         {
           path:"allVisa",
           element:<PrivateRoute><AllVisaUsers></AllVisaUsers></PrivateRoute>,
-          loader:()=> fetch("http://localhost:5000/visa")
+          loader:()=> fetch("https://visa-portal-website-server.vercel.app/visa")
         },
         {
           path:"/visaDetails/:id",
           element:<PrivateRoute><VisaDetails></VisaDetails></PrivateRoute>,
-          loader:({params})=>fetch(`http://localhost:5000/visa/${params.id}`)
+          loader:({params})=>fetch(`https://visa-portal-website-server.vercel.app/visa/${params.id}`)
         },
         {
           path:"/login",
@@ -51,7 +51,7 @@ import MyAddedVisas from "../Pages/MyAddedVisas";
         {
           path:"/visaApplication",
           element:<PrivateRoute><MyVisaApplication></MyVisaApplication></PrivateRoute>,
-          // loader:({params})=> fetch(`http://localhost:5000/visaApply/${params.email}`)
+          // loader:({params})=> fetch(`https://visa-portal-website-server.vercel.app/visaApply/${params.email}`)
           
         },
         {

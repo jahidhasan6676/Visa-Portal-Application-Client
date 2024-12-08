@@ -18,7 +18,7 @@ const MyVisaApplicationCard = ({ visaData, visaApply, setVisaApply }) => {
             if (result.isConfirmed) {
 
                 // delete application form database and ui
-                fetch(`http://localhost:5000/visaApply/${id}`, {
+                fetch(`https://visa-portal-website-server.vercel.app/visaApply/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

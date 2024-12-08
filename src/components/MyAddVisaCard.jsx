@@ -22,10 +22,10 @@ const MyAddVisaCard = ({ addVisa,myAddVisa, setMyAddVisa }) => {
         const applicationMethod = form.applicationMethod.value;
         const ageRestriction = parseInt(form.ageRestriction.value);
         const NewUser = { countryImage, countryName, visaType, processingTime, fee, validity, applicationMethod, ageRestriction };
-        console.log(NewUser);
+        // console.log(NewUser);
 
 
-        fetch(`http://localhost:5000/visa/emailed/${_id}`, {
+        fetch(`https://visa-portal-website-server.vercel.app/visa/emailed/${_id}`, {
             method: "PUT",
             headers: {
                 'content-type': 'application/json'
@@ -55,7 +55,7 @@ const MyAddVisaCard = ({ addVisa,myAddVisa, setMyAddVisa }) => {
     }
 
     const handleDeleteVisa = id => {
-        console.log(id)
+        // console.log(id)
 
         Swal.fire({
             title: "Are you sure?",
@@ -69,7 +69,7 @@ const MyAddVisaCard = ({ addVisa,myAddVisa, setMyAddVisa }) => {
             if (result.isConfirmed) {
 
                 // delete application form database and ui
-                fetch(`http://localhost:5000/visa/emailed/${id}`, {
+                fetch(`https://visa-portal-website-server.vercel.app/visa/emailed/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

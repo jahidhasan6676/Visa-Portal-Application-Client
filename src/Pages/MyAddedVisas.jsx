@@ -10,13 +10,13 @@ const MyAddedVisas = () => {
     useEffect(() => {
         // Fetch campaigns added by the specific user
         if (user?.email) {
-            fetch(`http://localhost:5000/visa/emailed/${user?.email}`)
+            fetch(`https://visa-portal-website-server.vercel.app/visa/emailed/${user?.email}`)
                 .then((res) => res.json())
                 .then((data) => {
 
                     setMyAddVisa(data);
                     setLoading(false)
-                    console.log(data)
+                    // console.log(data)
                 })
 
                 .catch((error) => console.error("Error fetching visaApply:", error));
