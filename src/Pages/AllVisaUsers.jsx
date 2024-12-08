@@ -31,7 +31,10 @@ const AllVisaUsers = () => {
 
             <div className="py-20 bg-gray-50">
                 <div className="md:flex md:justify-between w-11/12 lg:w-10/12 mx-auto">
-                    <div><h1 className="text-3xl font-bold  mb-10 text-center md:text-start">All Visas</h1></div>
+                    <div>
+                        <h1 className="text-3xl font-bold  mb-10 text-center md:text-start">Explore All Visa Applications Effortlessly</h1>
+                        
+                    </div>
 
                     {/* Filter Dropdown */}
                     <div className=" mb-10 text-center md:text-start">

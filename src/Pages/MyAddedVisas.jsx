@@ -25,7 +25,7 @@ const MyAddedVisas = () => {
     return (
         <div className="py-20 w-11/12 lg:w-10/12 mx-auto">
             <div className="mb-12">
-                <h2 className="text-3xl font-bold text-center">My All Visa Card</h2>
+                <h2 className="text-3xl font-bold text-center">Manage Your Visa Applications with Ease</h2>
             </div>
 
             <Fade duration={4000}>

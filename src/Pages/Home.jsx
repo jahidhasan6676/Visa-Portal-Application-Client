@@ -1,19 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Banner from "../components/Banner";
 import LatestVisaSection from "../components/LatestVisaSection";
 import OurCoaching from "../HomeExtraSection/OurCoaching";
 import OurService from "../HomeExtraSection/OurService";
-import Toggle from "../HomeExtraSection/Toggle";
-
-
+import { AuthContext } from "../Authentication/AuthProvider";
 
 
 const Home = () => {
+    const {isDarkMode} = useContext(AuthContext)
+
    
     return (
-        <div className="dark:bg-[#181C14]  dark:text-white">
-            
-            <Toggle></Toggle>
+        <div className={isDarkMode ? "dark-mode" : "light-mode"}>
+          
             <Banner></Banner>
             <LatestVisaSection></LatestVisaSection>
             <OurService></OurService>

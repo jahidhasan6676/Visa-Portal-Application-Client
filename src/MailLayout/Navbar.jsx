@@ -4,9 +4,13 @@ import { TfiWorld } from "react-icons/tfi";
 import { AuthContext } from "../Authentication/AuthProvider";
 import { Tooltip } from 'react-tooltip';
 import 'react-tooltip/dist/react-tooltip.css';
+import { MdDarkMode, MdOutlineDarkMode } from "react-icons/md";
+import { FaMoon } from "react-icons/fa";
+import { FiSun } from "react-icons/fi";
 
 const Navbar = () => {
-    const { userLogOut, user } = useContext(AuthContext)
+    const { userLogOut, user, setIsDarkMode, isDarkMode, toggleTheme } = useContext(AuthContext);
+
 
     const [open, setOpen] = useState(false);
     const navigate = useNavigate();
@@ -22,7 +26,7 @@ const Navbar = () => {
     return (
         <nav className="py-5 bg-gray-800 text-white w-full  fixed top-0 z-50">
 
-            <div className="w-11/12 lg:w-10/12 mx-auto lg:flex lg:justify-between lg:items-center ">
+            <div className="w-11/12 mx-auto lg:flex lg:justify-between lg:items-center ">
                 {/* logo and name */}
                 <div className="flex justify-between items-center">
                     <div className=" text-2xl font-semibold flex items-center cursor-pointer">
@@ -80,6 +84,13 @@ const Navbar = () => {
                                 </Link>
                             </div>
                     }
+
+                    {/* Toggle Button */}
+                    <div className="theme-toggle ml-2">
+                        <button onClick={toggleTheme}>
+                        {isDarkMode ? <span className="text-xl text-yellow-500"><FiSun /> </span>  : <span className="text-xl text-gray-400"><FaMoon /></span>}
+                        </button>
+                    </div>
                 </ul>
             </div>
         </nav>

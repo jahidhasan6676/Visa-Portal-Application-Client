@@ -43,7 +43,7 @@ const MyVisaApplication = () => {
                 <div className="w-full pt-8 md:flex md:justify-between md:items-center">
                     <div>
                         <h1 className="text-2xl md:text-3xl font-bold mb-10">
-                            My Visa Applications
+                        Track, Search, and Manage Your Submissions
                         </h1>
                     </div>
                     <div>

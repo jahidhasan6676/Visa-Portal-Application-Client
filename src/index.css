@@ -7,8 +7,23 @@
     background-color: hsl(226, 83%, 7%);
 }
 
-body{
+body {
+    overflow-y: scroll;
     overflow-x: hidden;
+  }
+
+
+/* toggle */
+/* light mode styling */
+.light-mode {
+    background-color: #ffffff;
     
+}
+
+/* dark mode styling */
+.dark-mode {
+    background-color:#021526;
+    /* background-color:#17153B; */
+    color: #ffffff;
 }
 

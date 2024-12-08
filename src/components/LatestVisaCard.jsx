@@ -4,13 +4,13 @@ import { Link } from "react-router-dom";
 const LatestVisaCard = ({ visas }) => {
     const { _id, countryName, countryImage, description, fee, visaType, processingTime, validity, applicationMethod } = visas;
     return (
-        <div className="card border flex flex-col p-3">
+        <div className="card border flex flex-col p-3  bg-white shadow-md">
             <div>
                 <img className="h-[200px] w-full rounded-md object-cover"
                     src={countryImage}
                     alt="Flag" />
             </div>
-            <div className="  flex-grow flex flex-col justify-between">
+            <div className="  flex-grow flex flex-col justify-between dark:text-white">
                 <h2 className="text-xl font-semibold text-gray-800 mb-4 mt-4">
                     {countryName}
                 </h2>

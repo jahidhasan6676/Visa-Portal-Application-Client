@@ -8,6 +8,13 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    // dark/light
+    
+    const toggleTheme = () => {
+        setIsDarkMode(!isDarkMode);
+    };
    
 
     // google popup
@@ -50,7 +57,10 @@ const AuthProvider = ({children}) => {
         user,
         loading,
         updateUserProfile,
-        setLoading
+        setLoading,
+        toggleTheme,
+        isDarkMode,
+        setIsDarkMode
         
     }
 
